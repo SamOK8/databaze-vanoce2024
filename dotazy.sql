@@ -29,6 +29,6 @@ SELECT TOP 1 VozidloID, VykonHP, TechnickyStav
 FROM Vozidla
 ORDER BY VykonHP DESC;
 
-SELECT COUNT() AS PocetVyrequiOpravu
+SELECT COUNT() AS PocetVyzadujiciOpravu
 FROM Vozidla
 WHERE TechnickyStav = 'vyžaduje opravu';

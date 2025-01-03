@@ -21,7 +21,7 @@ FROM TechnickeKontroly
 ORDER BY DatumNadchazejiciSTK ASC;
 
 SELECT TOP 1 VozidloID, DatumKontroly
-FROM HistorieKontrol
+FROM Kontroly
 WHERE Vysledek LIKE '%pneumatik%'
 ORDER BY DatumKontroly DESC;
 

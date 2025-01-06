@@ -98,9 +98,9 @@ VALUES
 
 INSERT INTO Role (Nazev)
 VALUES
-    ('admin'),
-    ('půjčovatel'),
-    ('servisní technik');
+    ('Manager'),
+    ('Pronajimatel automobilu'),
+    ('Spravce automobilu');
 
 INSERT INTO Uzivatele (Jmeno, RoleID)
 VALUES

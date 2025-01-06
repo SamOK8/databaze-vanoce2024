@@ -1,18 +1,18 @@
-create database autopujcovna;
+
 use autopujcovna;
 
     create table Vozidla(
         VozidloID INT PRIMARY KEY IDENTITY(1,1),
-        Znacka VARCHAR(50),
-        Model VARCHAR(50),
+        Znacka VARCHAR(50) not null,
+        Model VARCHAR(50) not null,
         TypKaroserie VARCHAR(50),
-        VelikostKufru INT,
-        VykonHP INT,
-        SPZ VARCHAR(20) UNIQUE,
+        VelikostKufru INT check(VelikostKufru > 0),
+        VykonHP INT check(VykonHP > 0),
+        SPZ VARCHAR(20) UNIQUE not null,
         TechnickyStav NVARCHAR(20) CHECK (TechnickyStav IN ('výborný', 'dobrý', 'vyžaduje opravu')),
         Stav VARCHAR(20) CHECK (Stav IN ('volné', 'zapůjčené', 'v servisu')),
         DatumDostupnosti DATE,
-        PocetZapujceni INT
+        PocetZapujceni INT check(PocetZapujceni >= 0)
     )
 
     create table TechnickeKontroly(
@@ -26,7 +26,7 @@ use autopujcovna;
     create table Servisy(
         ServisID INT PRIMARY KEY IDENTITY(1,1),
         VozidloID INT FOREIGN KEY REFERENCES Vozidla(VozidloID),
-        DatumServisu DATE
+        DatumServisu DATE,
         PopisOpravy VARCHAR(255)
     )
 
@@ -47,14 +47,14 @@ use autopujcovna;
 
     CREATE TABLE Role (
         RoleID INT PRIMARY KEY IDENTITY(1,1),
-        Nazev VARCHAR(50) UNIQUE
+        Nazev VARCHAR(50) UNIQUE not null
     );
 
     CREATE TABLE Uzivatele (
         UzivatelID INT PRIMARY KEY IDENTITY(1,1),
         Jmeno VARCHAR(50),
-        RoleID INT,
-        FOREIGN KEY (RoleID) REFERENCES Role(RoleID)
+        RoleID INT FOREIGN KEY REFERENCES Role(RoleID),
+
     );
 
 

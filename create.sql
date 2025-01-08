@@ -38,6 +38,7 @@ use autopujcovna;
     )
 
     create table pujceni(
+        PujceniID INT PRIMARY KEY IDENTITY(1,1),
         VozidloID INT FOREIGN KEY REFERENCES Vozidla(VozidloID),
         JmenoZakaznika VARCHAR(50),
         PrijmeniZakaznika VARCHAR(50),
@@ -53,7 +54,7 @@ use autopujcovna;
     CREATE TABLE Uzivatele (
         UzivatelID INT PRIMARY KEY IDENTITY(1,1),
         Jmeno VARCHAR(50),
-        RoleID INT FOREIGN KEY REFERENCES Role(RoleID),
+        RoleID INT not null FOREIGN KEY REFERENCES Role(RoleID),
 
     );
 
